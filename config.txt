@@ -1,0 +1,3 @@
+DEFAULT CONFIG EXPLANATION:
+training=false //a flow decided and predicted wont be stored in the database,for a future training,
+netdefense=true //the netdefense engine is started

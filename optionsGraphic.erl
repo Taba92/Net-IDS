@@ -12,7 +12,7 @@ init([])->
 	{ok,State}.
 
 graphic_interface(Dets)->
-	Frame=wxFrame:new(wx:null(),0,"NIDS",[{size,{480,550}}]),
+	Frame=wxFrame:new(wx:null(),0,"NIDS",[{size,{600,600}}]),
 	wxFrame:connect(Frame, close_window),
 	wxStaticText:new(Frame,1,"Opzione",[{pos,{20,30}}]),
 	Opt=wxTextCtrl:new(Frame,2,[{pos,{150, 30}}]),
@@ -32,13 +32,17 @@ graphic_interface(Dets)->
 	Recompilaton= wxTextCtrl:new(Frame,5,[{style, ?wxTE_MULTILINE bor ?wxTE_READONLY},{pos,{170,300}}]),
 	wxTextCtrl:setSize(Recompilaton,300,150),
 	HotReload=wxButton:new(Frame,10, [{label, "HOT CODE RELOAD"}, {pos,{20, 340}}]),
-	wxButton:connect(HotReload, command_button_clicked,[{userData,Recompilaton}]),
 	Fit=wxButton:new(Frame,9, [{label, "ALLENA"}, {pos,{20, 290}}]),
-	wxButton:connect(Fit, command_button_clicked,[{userData,[Fit,HotReload]}]),
 	FolderLog=wxTextCtrl:new(Frame,12,[{pos,{170, 460}}]),
 	wxTextCtrl:setSize(FolderLog,210,37),
 	Log=wxButton:new(Frame,11, [{label, "DUMP LOG"}, {pos,{20, 460}}]),
 	wxButton:connect(Log, command_button_clicked,[{userData,{Log,FolderLog}}]),
+	ChunksFolder=wxTextCtrl:new(Frame,12,[{pos,{170, 500}}]),
+	wxTextCtrl:setSize(ChunksFolder,210,37),
+	Dataset=wxButton:new(Frame,13, [{label, "CREA NUOVO\n DATASET"}, {pos,{20, 500}}]),
+	wxButton:connect(Dataset, command_button_clicked,[{userData,{[Fit,HotReload,Dataset],ChunksFolder}}]),
+	wxButton:connect(Fit, command_button_clicked,[{userData,[Fit,HotReload,Dataset]}]),
+	wxButton:connect(HotReload, command_button_clicked,[{userData,{[Fit,HotReload,Dataset],Recompilaton}}]),
 	wxFrame:show(Frame),
 	Frame.
 
@@ -76,12 +80,15 @@ handle_info({wx,9,_,Btns,_},State)->
 		false->
 			[wxButton:disable(Btn)||Btn<-Btns],
 			dbHandler ! fit,
-			receive fitted->[wxButton:enable(Btn)||Btn<-Btns] end
+			receive fitted->[wxButton:enable(Btn)||Btn<-Btns] end,
+			options:showMsg("MODELLO RIALLENATO")
 	end,
 	{noreply,State};
-handle_info({wx,10,_,TextBox,_},State)->
+handle_info({wx,10,_,{Btns,TextBox},_},State)->
+	[wxButton:disable(Btn)||Btn<-Btns],
 	ValueRet=options:hot_code_reload(),
 	wxTextCtrl:setValue(TextBox,ValueRet),
+	[wxButton:enable(Btn)||Btn<-Btns],
 	{noreply,State};
 handle_info({wx,11,_,{Btn,TextBox},_},State)->
 	Dir=wxTextCtrl:getValue(TextBox),
@@ -90,9 +97,24 @@ handle_info({wx,11,_,{Btn,TextBox},_},State)->
 			wxButton:disable(Btn),
 			options:dump_log(Dir),
 			wxButton:enable(Btn),
-			options:showMsg("DUMP DEI LOG TERMINATO~n");
+			options:showMsg("DUMP DEI LOG TERMINATO");
 		false->
 			options:showMsg("PERCORSO NON VALIDO O CARTELLA INESISTENTE")
+	end,
+	{noreply,State};
+handle_info({wx,13,_,{Btns,TextBox},_},State)->
+	Dir=wxTextCtrl:getValue(TextBox),
+	case filelib:is_dir(Dir) andalso whereis(dbHandler)/=undefined of
+		true->
+			[wxButton:disable(Btn)||Btn<-Btns],
+			dbHandler ! {create_new_dataset,Dir},
+			receive 
+				created_new_dataset->options:showMsg("NUOVO DATASET CREATO");
+				invalid_dir->options:showMsg("CARTELLA DEI CHUNKS NON VALIDA,CONTROLLARE CHE SIANO TUTTI DEI CSV E CHE NE ESISTA ALMENO UNO!!")
+			end,
+			[wxButton:enable(Btn)||Btn<-Btns];
+		false->
+			options:showMsg("PERCORSO NON VALIDO O DBHANDLER NON ATTIVO")
 	end,
 	{noreply,State}.
 

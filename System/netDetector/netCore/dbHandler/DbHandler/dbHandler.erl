@@ -1,6 +1,6 @@
 -module(dbHandler).
--export([init/0,init/1,handle_info/2,handle_call/3]).
--record(state,{graphic,dataset,features,targets,training}).
+-export([init/0,init/1,handle_info/2]).
+-record(state,{graphic,dataset,targets,training}).
 
 init()->
 	gen_server:start_link({local,dbHandler},?MODULE,[],[]).
@@ -11,11 +11,11 @@ init([])->
 	TargetsFileName=CurDir++"/Dataset/labels.txt",
 	File=CurDir++"/Dataset/Dataset.csv",
 	{ok,Dataset}=file:open(File,[read,append,raw,binary,{read_ahead,200000}]),
-	{ok,FileTargetNames}=file:open(TargetsFileName,[read]),
+	{ok,FileTargets}=file:open(TargetsFileName,[read]),
 	[{_,Training}]=ets:lookup(opts,training),
-	{Features,Targets}=readFeaturesAndTargetNames(Dataset,FileTargetNames),
+	{_,Targets}=readFeaturesAndTargetNames(Dataset,FileTargets),
 	Frame=dbHandlerGraphic:get_window(Targets),
-	State=#state{graphic=Frame,dataset=Dataset,features=Features,targets=Targets,training=Training},
+	State=#state{graphic=Frame,dataset=Dataset,targets=FileTargets,training=Training},
 	{ok,State}.
 
 handle_info({storeRecord,FlowId,RecordDecided},State)when State#state.training->
@@ -29,24 +29,54 @@ handle_info({storeRecord,FlowId,RecordDecided},State)when State#state.training->
 	end,
 	{noreply,NewState};
 handle_info(fit,State)->
-	#state{dataset=Dataset,features=FeaturesNames,targets=TargetsNames}=State,
+	#state{dataset=Dataset,targets=FileTargets}=State,
 	file:position(Dataset,bof),
-	file:read_line(Dataset),
-	erlDecisor ! {loadTargets,[FeaturesNames,TargetsNames]},
+	{Features,Targets}=readFeaturesAndTargetNames(Dataset,FileTargets),
+	erlDecisor ! {loadTargets,[Features,Targets]},
 	receive {erlDecisor,ackTargets}->ok end,
 	readDataset(0,Dataset,ets:new(chunk,[duplicate_bag])),
 	{noreply,State};
+handle_info({create_new_dataset,Dir},State)->
+	#state{dataset=Dataset,targets=FileTargets}=State,
+	NewState=case is_valid_chunks_dir(Dir) of
+		true->
+			CurDir=filename:dirname(code:where_is_file(?FILE)),
+			DataFolder=CurDir++"/Dataset",
+			TargetsName=CurDir++"/Dataset/labels.txt",
+			DatasetName=CurDir++"/Dataset/Dataset.csv",
+			file:close(Dataset),
+			file:close(FileTargets),
+			file:delete(DatasetName),
+			file:delete(TargetsName),
+			os:cmd("sudo "++CurDir++"/merger.py "++Dir++" "++DataFolder),
+			os:cmd("sudo "++CurDir++"/extractor.py "++Dir++" "++DataFolder),
+			{ok,NewDataset}=file:open(DatasetName,[read,append,raw,binary,{read_ahead,200000}]),
+			{ok,NewFileTargets}=file:open(TargetsName,[read]),
+			{_,Targets}=readFeaturesAndTargetNames(NewDataset,NewFileTargets),
+			NewFrame=dbHandlerGraphic:get_window(Targets),
+			options ! created_new_dataset,
+			State#state{graphic=NewFrame,dataset=NewDataset,targets=NewFileTargets};
+		false->options ! invalid_dir,
+				State
+	end,
+	{noreply,NewState};
 handle_info({change_train,Bool},State)->
 	{noreply,State#state{training=Bool}};
 handle_info(_,State)->
 	{noreply,State}.
 
-handle_call(fit,_,State)->
-	#state{dataset=Dataset,features=FeaturesNames,targets=TargetsNames}=State,
-	erlDecisor ! {loadTargets,[FeaturesNames,TargetsNames]},
-	receive {erlDecisor,ackTargets}->ok end,
-	readDataset(0,Dataset,ets:new(chunk,[duplicate_bag])),
-	{reply,ok,State}.
+
+is_valid_chunks_dir(Dir)->
+	{ok,Chunks}=file:list_dir(Dir),
+	case Chunks of%guardo se c'è almeno un file
+		[]->false;
+		Files->Extensions=[filename:extension(File)==".csv"||File<-Files],%guardo se son tutti file .csv
+			case lists:member(false,Extensions) of
+				true->false;
+				false->true
+			end
+	end.
+
 
 readDataset(SeqNumber,File,Ets)->
 	IsFinish=readDatasetChunk(File,file:read_line(File),Ets,0),
@@ -84,6 +114,7 @@ readFeaturesAndTargetNames(Dataset,TargetsFile)->
 	{ok,TargetsLine}=file:read_line(TargetsFile),
 	FeaturesNames=string:split(string:trim(binary_to_list(FeaturesLine)),",",all),
 	TargetsNames=string:split(string:trim(TargetsLine),",",all),
+	file:position(TargetsFile,bof),
 	{FeaturesNames,TargetsNames}.
 
 stringify([H|T],Acc)->

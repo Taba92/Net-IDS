@@ -10,12 +10,18 @@ init([])->
 	CurDir=filename:dirname(code:where_is_file(?FILE)),
 	TargetsFileName=CurDir++"/Dataset/labels.txt",
 	File=CurDir++"/Dataset/Dataset.csv",
-	{ok,Dataset}=file:open(File,[read,append,raw,binary,{read_ahead,200000}]),
-	{ok,FileTargets}=file:open(TargetsFileName,[read]),
 	[{_,Training}]=ets:lookup(opts,training),
-	{_,Targets}=readFeaturesAndTargetNames(Dataset,FileTargets),
-	Frame=dbHandlerGraphic:get_window(Targets),
-	State=#state{graphic=Frame,dataset=Dataset,targets=FileTargets,training=Training},
+	State=case filelib:is_file(TargetsFileName) andalso filelib:is_file(File) of
+		true->
+			{ok,Dataset}=file:open(File,[read,append,raw,binary,{read_ahead,200000}]),
+			{ok,FileTargets}=file:open(TargetsFileName,[read]),
+			{_,Targets}=readFeaturesAndTargetNames(Dataset,FileTargets),
+			Frame=dbHandlerGraphic:get_window(Targets),
+			#state{graphic=Frame,dataset=Dataset,targets=FileTargets,training=Training};
+		false->
+			options:showMsg("ATTENZIONE, NON SONO STATI TROVATI I FILE DATI PER IL DBHANDLER\nINIZIALIZZARLI AL PIÙ PRESTO!!!!"),
+			#state{training=Training}
+		end,
 	{ok,State}.
 
 handle_info({storeRecord,FlowId,RecordDecided},State)when State#state.training->
@@ -48,7 +54,7 @@ handle_info({create_new_dataset,Dir},State)->
 			file:close(FileTargets),
 			file:delete(DatasetName),
 			file:delete(TargetsName),
-			os:cmd("sudo "++CurDir++"/merger.py "++Dir++" "++DataFolder),
+			merge_and_extract(Dir,DatasetName,TargetsName),
 			os:cmd("sudo "++CurDir++"/extractor.py "++Dir++" "++DataFolder),
 			{ok,NewDataset}=file:open(DatasetName,[read,append,raw,binary,{read_ahead,200000}]),
 			{ok,NewFileTargets}=file:open(TargetsName,[read]),
@@ -65,6 +71,43 @@ handle_info({change_train,Bool},State)->
 handle_info(_,State)->
 	{noreply,State}.
 
+merge_and_extract(ChunksDir,DatasetPath,TargetsPath)->
+	{ok,FilesNames}=file:list_dir(ChunksDir),
+	{ok,NewDataset}=file:open(DatasetPath,[append]),
+	{ok,NewTargets}=file:open(TargetsPath,[write]),
+	merge_and_extract(FilesNames,ChunksDir,true,[],NewDataset,NewTargets).
+merge_and_extract([],_,false,Acc,Dataset,Targets)->
+	file:close(Dataset),
+	TargetsString=lists:concat(lists:join(",",Acc)),
+	file:write(Targets,TargetsString),
+	file:close(Targets);
+merge_and_extract([H|T],ChunksDir,false,Acc,NewDataset,NewTargets)->
+	{ok,Chunk}=file:open(ChunksDir++H,[read]),
+	file:read_line(Chunk),%gli cavo la prima linea,in quanto i "titoli" delle features le ho gia immagazzinati
+	NewAcc=copy_chunk(Chunk,NewDataset,Acc),
+	merge_and_extract(T,ChunksDir,false,NewAcc,NewDataset,NewTargets);
+merge_and_extract([H|T],ChunksDir,true,Acc,NewDataset,NewTargets)->
+	{ok,Chunk}=file:open(ChunksDir++H,[read]),
+	NewAcc=copy_chunk(Chunk,NewDataset,Acc),
+	merge_and_extract(T,ChunksDir,false,NewAcc,NewDataset,NewTargets).
+
+copy_chunk(Chunk,NewDataset,Acc)->
+	copy_chunk(file:read_line(Chunk),Chunk,NewDataset,Acc).
+copy_chunk(eof,Chunk,_,Acc)->
+	file:close(Chunk),
+	Acc;
+copy_chunk({ok,Line},Chunk,NewDataset,Acc)->
+	ParsedLine=string:split(string:trim(Line),",",all),
+	case lists:member("Nan",ParsedLine) orelse lists:member("Infinity",ParsedLine) of
+		true->copy_chunk(file:read_line(Chunk),Chunk,NewDataset,Acc);
+		false->file:write(NewDataset,Line),
+				Target=lists:last(ParsedLine),
+				NewAcc=case lists:member(Target,Acc) of
+						true->Acc;
+						false->Acc++[Target]
+					end,
+			   copy_chunk(file:read_line(Chunk),Chunk,NewDataset,NewAcc)
+	end.
 
 is_valid_chunks_dir(Dir)->
 	{ok,Chunks}=file:list_dir(Dir),

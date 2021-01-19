@@ -1,1276 +1,28 @@
-=INFO REPORT==== 17-Jan-2021::16:05:35.723936 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 40018
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 514
-    start: {16,5,5}
-    finish: {16,5,5}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:35.900775 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 33628
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 514
-    start: {16,5,5}
-    finish: {16,5,5}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:35.906047 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 43589
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 514
-    start: {16,5,5}
-    finish: {16,5,5}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:35.921127 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 46694
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 356
-    start: {16,5,5}
-    finish: {16,5,5}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:36.089308 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 40373
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 356
-    start: {16,5,5}
-    finish: {16,5,6}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:36.733310 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,78}
-    portSrc: 54772
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,6}
-    finish: {16,5,6}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:36.900049 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,206,66}
-    portSrc: 45636
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,6}
-    finish: {16,5,6}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:36.903601 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,209,46}
-    portSrc: 59326
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,6}
-    finish: {16,5,6}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:37.882829 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,205,66}
-    portSrc: 41460
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,7}
-    finish: {16,5,7}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:38.124992 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,198,34}
-    portSrc: 46174
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,7}
-    finish: {16,5,8}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:39.925662 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,205,67}
-    portSrc: 52508
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {16,5,9}
-    finish: {16,5,9}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:05:40.790928 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,5,0}
-    finish: {16,5,10}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.809236 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 50539
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 480
-    start: {16,5,41}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.834535 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {143,204,11,117}
-    portSrc: 41620
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 15
-    sizeBytes: 1008
-    start: {16,4,57}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.857788 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,78}
-    portSrc: 54772
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 5
-    sizeBytes: 263
-    start: {16,5,41}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.867334 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {143,204,11,95}
-    portSrc: 51244
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 16
-    sizeBytes: 664
-    start: {16,4,58}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.872296 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,205,66}
-    portSrc: 41460
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 5
-    sizeBytes: 263
-    start: {16,5,41}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.875910 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {34,107,221,82}
-    portSrc: 36450
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 14
-    sizeBytes: 1094
-    start: {16,4,57}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.876977 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {93,184,220,29}
-    portSrc: 55120
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 15
-    sizeBytes: 600
-    start: {16,4,58}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.877937 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,131}
-    portSrc: 39402
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 13
-    sizeBytes: 520
-    start: {16,4,55}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.878949 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {143,204,11,117}
-    portSrc: 41618
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 16
-    sizeBytes: 664
-    start: {16,4,57}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.880471 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,209,46}
-    portSrc: 59326
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 7
-    sizeBytes: 343
-    start: {16,5,41}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.885211 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,206,66}
-    portSrc: 45636
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 6
-    sizeBytes: 303
-    start: {16,5,41}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.886051 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,131}
-    portSrc: 39374
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 15
-    sizeBytes: 600
-    start: {16,4,55}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.886745 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {34,107,221,82}
-    portSrc: 36444
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 17
-    sizeBytes: 1209
-    start: {16,4,56}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:11.887476 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {172,217,21,67}
-    portSrc: 45608
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 10
-    sizeBytes: 541
-    start: {16,5,12}
-    finish: {16,5,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:12.110253 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {52,13,148,70}
-    portSrc: 60054
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 9
-    sizeBytes: 488
-    start: {16,5,41}
-    finish: {16,5,42}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:12.143703 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,131}
-    portSrc: 39376
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 16
-    sizeBytes: 640
-    start: {16,4,55}
-    finish: {16,5,42}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:12.148930 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,198,34}
-    portSrc: 46174
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 7
-    sizeBytes: 367
-    start: {16,5,41}
-    finish: {16,5,42}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:12.431053 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,198,46}
-    portSrc: 43584
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 12
-    sizeBytes: 621
-    start: {16,5,13}
-    finish: {16,5,42}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:06:12.714374 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,205,67}
-    portSrc: 52508
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 9
-    sizeBytes: 423
-    start: {16,5,41}
-    finish: {16,5,42}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:10:48.592845 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,10,16}
-    finish: {16,10,17}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:15:50.379428 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,15,19}
-    finish: {16,15,20}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:20:52.870778 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,20,21}
-    finish: {16,20,22}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:25:16.246779 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,24,45}
-    finish: {16,24,46}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:25:55.258371 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,25,24}
-    finish: {16,25,25}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:28:02.304391 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {147,135,207,213}
-    portSrc: 37822
-    portDst: 123
-    protoTrans: {17,udp}
-    protoService: ntp
-    numberOfPackets: 2
-    sizeBytes: 152
-    start: {16,27,32}
-    finish: {16,27,32}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:28:08.892617 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
+=INFO REPORT==== 19-Jan-2021::16:43:15.679188 ===
+    ipSrc: {192,168,43,1}
+    ipDst: {192,168,43,241}
     portSrc: undefined
     portDst: undefined
     protoTrans: {2054,arp}
     protoService: undefined
     numberOfPackets: 2
     sizeBytes: 56
-    start: {16,27,37}
-    finish: {16,27,37}
+    start: {16,42,45}
+    finish: {16,42,45}
     prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:53:16.246141 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,52,45}
-    finish: {16,52,46}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::16:56:08.768539 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,55,37}
-    finish: {16,55,38}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:01:11.157201 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,0,40}
-    finish: {17,0,41}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:02:10.556301 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {147,135,207,213}
-    portSrc: 48594
-    portDst: 123
-    protoTrans: {17,udp}
-    protoService: ntp
-    numberOfPackets: 2
-    sizeBytes: 152
-    start: {17,1,40}
-    finish: {17,1,40}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:02:15.524939 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,1,45}
-    finish: {17,1,45}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:03:13.717432 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 68
-    portDst: 67
-    protoTrans: {17,udp}
-    protoService: 'dhcp-client'
-    numberOfPackets: 2
-    sizeBytes: 707
-    start: {17,2,43}
-    finish: {17,2,43}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:03:18.758379 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,2,48}
-    finish: {17,2,48}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:06:36.868619 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,2}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,5,43}
-    finish: {17,5,44}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:06:36.915997 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,4,1}
-    finish: {17,4,1}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:06:36.917015 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {45,55,41,223}
-    portSrc: 40898
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 9
-    sizeBytes: 1477
-    start: {17,3,56}
-    finish: {17,3,56}
-    prediction: DoS Hulk
-=INFO REPORT==== 17-Jan-2021::17:06:49.695767 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 59131
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 2
-    sizeBytes: 160
-    start: {17,3,56}
-    finish: {17,3,56}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:06:49.698177 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,5,42}
-    finish: {17,5,43}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:06:49.699674 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,5,4}
-    finish: {17,5,4}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::17:07:24.201443 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,6,53}
-    finish: {17,6,54}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::19:16:38.227214 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {19,16,7}
-    finish: {19,16,8}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::19:21:15.608979 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {19,19,26}
-    finish: {19,19,27}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::19:21:39.793920 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {19,21,8}
-    finish: {19,21,9}
-    prediction: BENIGN
-=INFO REPORT==== 17-Jan-2021::19:23:46.194740 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,163}
-    portSrc: 51514
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 100
-    sizeBytes: 64403
-    start: {19,23,44}
-    finish: {19,23,46}
-    prediction: DDoS
-=INFO REPORT==== 17-Jan-2021::19:23:53.210537 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,163}
-    portSrc: 51514
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 100
-    sizeBytes: 24474
-    start: {19,23,46}
-    finish: {19,23,53}
-    prediction: DoS Hulk
-=INFO REPORT==== 18-Jan-2021::15:34:19.748730 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {212,45,144,3}
-    portSrc: 36026
-    portDst: 123
-    protoTrans: {17,udp}
-    protoService: ntp
-    numberOfPackets: 2
-    sizeBytes: 152
-    start: {15,33,49}
-    finish: {15,33,49}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:34:24.713352 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {15,33,54}
-    finish: {15,33,54}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:34:25.581083 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {142,250,180,170}
-    portSrc: 46624
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 198
-    start: {15,33,55}
-    finish: {15,33,55}
-    prediction: SSH-Patator
-=INFO REPORT==== 18-Jan-2021::15:37:46.041778 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {15,37,15}
-    finish: {15,37,16}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:37:50.793469 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {15,37,20}
-    finish: {15,37,20}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:38:35.926176 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {212,45,144,3}
-    portSrc: 35364
-    portDst: 123
-    protoTrans: {17,udp}
-    protoService: ntp
-    numberOfPackets: 2
-    sizeBytes: 152
-    start: {15,38,5}
-    finish: {15,38,5}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:38:40.971082 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {15,38,10}
-    finish: {15,38,10}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:42:29.814658 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 36147
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 2
-    sizeBytes: 128
-    start: {15,41,59}
-    finish: {15,41,59}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:42:34.954201 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,121,151,106}
-    portSrc: 41554
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 8
-    sizeBytes: 320
-    start: {15,41,59}
-    finish: {15,42,4}
-    prediction: DDoS
-=INFO REPORT==== 18-Jan-2021::15:42:42.257033 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {15,42,4}
-    finish: {15,42,4}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::15:42:42.259135 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,121,151,106}
-    portSrc: 41556
-    portDst: 80
-    protoTrans: {6,tcp}
-    protoService: http
-    numberOfPackets: 8
-    sizeBytes: 320
-    start: {15,41,59}
-    finish: {15,42,5}
-    prediction: DDoS
-=INFO REPORT==== 18-Jan-2021::15:42:46.277576 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {15,42,15}
-    finish: {15,42,16}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:07:47.258066 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 226
-    start: {16,7,16}
-    finish: {16,7,17}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:07:52.005012 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {16,7,22}
-    finish: {16,7,22}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:09:13.681983 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,8,42}
-    finish: {16,8,43}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:27:40.630397 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 36257
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 542
-    start: {16,27,10}
-    finish: {16,27,10}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:27:41.200902 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 55837
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 397
-    start: {16,27,11}
-    finish: {16,27,11}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:27:45.650556 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {16,27,15}
-    finish: {16,27,15}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:27:47.189288 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {34,216,48,72}
-    portSrc: 53296
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 22
-    sizeBytes: 5035
-    start: {16,27,10}
-    finish: {16,27,17}
-    prediction: DDoS
-=INFO REPORT==== 18-Jan-2021::16:27:49.781020 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {16,27,17}
-    finish: {16,27,18}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:06.215028 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 46978
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 516
-    start: {16,27,36}
-    finish: {16,27,36}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:06.798017 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 43520
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 568
-    start: {16,27,36}
-    finish: {16,27,36}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:07.016856 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 34030
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 2
-    sizeBytes: 174
-    start: {16,27,37}
-    finish: {16,27,37}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:07.041987 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 39360
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 397
-    start: {16,27,37}
-    finish: {16,27,37}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:07.468464 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {34,98,75,36}
-    portSrc: 50898
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 30
-    sizeBytes: 7611
-    start: {16,27,36}
-    finish: {16,27,37}
-    prediction: DoS Hulk
-=INFO REPORT==== 18-Jan-2021::16:28:10.301050 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 39491
-    portDst: 53
-    protoTrans: {17,udp}
-    protoService: dns
-    numberOfPackets: 4
-    sizeBytes: 692
-    start: {16,27,37}
-    finish: {16,27,37}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::16:28:10.678364 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {99,86,159,30}
-    portSrc: 42034
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 76
-    sizeBytes: 24697
-    start: {16,27,37}
-    finish: {16,27,40}
-    prediction: DoS Hulk
-=INFO REPORT==== 18-Jan-2021::16:28:42.581364 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {34,216,48,72}
-    portSrc: 53294
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 34
-    sizeBytes: 6967
-    start: {16,27,10}
-    finish: {16,28,12}
-    prediction: DoS Hulk
-=INFO REPORT==== 18-Jan-2021::16:28:47.598701 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {16,28,17}
-    finish: {16,28,17}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:03:23.962886 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,209,42}
-    portSrc: 37276
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 4
-    sizeBytes: 238
-    start: {17,2,53}
-    finish: {17,2,53}
-    prediction: SSH-Patator
-=INFO REPORT==== 18-Jan-2021::17:04:22.920636 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,209,42}
-    portSrc: 37276
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 198
-    start: {17,3,52}
-    finish: {17,3,52}
-    prediction: SSH-Patator
-=INFO REPORT==== 18-Jan-2021::17:04:30.326651 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 6
-    sizeBytes: 168
-    start: {17,3,58}
-    finish: {17,4,0}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:05:15.986659 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {216,58,209,42}
-    portSrc: 37276
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 5
-    sizeBytes: 263
-    start: {17,4,45}
-    finish: {17,4,45}
-    prediction: DDoS
-=INFO REPORT==== 18-Jan-2021::17:05:27.021185 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,4,51}
-    finish: {17,4,51}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:09:32.716723 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,9,1}
-    finish: {17,9,2}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:12:28.935895 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {212,45,144,3}
-    portSrc: 48653
-    portDst: 123
-    protoTrans: {17,udp}
-    protoService: ntp
-    numberOfPackets: 2
-    sizeBytes: 152
-    start: {17,11,58}
-    finish: {17,11,58}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:12:33.989997 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,12,3}
-    finish: {17,12,3}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:12:50.449085 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {17,12,20}
-    finish: {17,12,20}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:14:35.211390 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,14,4}
-    finish: {17,14,5}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:17:50.693690 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {17,17,20}
-    finish: {17,17,20}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:17:55.532510 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,17,25}
-    finish: {17,17,25}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:19:37.605530 ===
-    ipSrc: {192,168,1,1}
-    ipDst: {192,168,1,3}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,19,6}
-    finish: {17,19,7}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:22:50.934986 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {17,22,20}
-    finish: {17,22,20}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:22:55.817052 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,22,25}
-    finish: {17,22,25}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:26:56.018265 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: 68
-    portDst: 67
-    protoTrans: {17,udp}
-    protoService: 'dhcp-client'
-    numberOfPackets: 2
-    sizeBytes: 707
-    start: {17,26,25}
-    finish: {17,26,26}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:27:01.060906 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 4
-    sizeBytes: 112
-    start: {17,26,31}
-    finish: {17,26,31}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:27:51.170885 ===
-    ipSrc: {44,233,1,41}
-    ipDst: {192,168,1,3}
-    portSrc: 443
-    portDst: 34298
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 3
-    sizeBytes: 186
-    start: {17,27,20}
-    finish: {17,27,21}
-    prediction: BENIGN
-=INFO REPORT==== 18-Jan-2021::17:27:56.100769 ===
-    ipSrc: {192,168,1,3}
-    ipDst: {192,168,1,1}
-    portSrc: undefined
-    portDst: undefined
-    protoTrans: {2054,arp}
-    protoService: undefined
-    numberOfPackets: 2
-    sizeBytes: 56
-    start: {17,27,26}
-    finish: {17,27,26}
-    prediction: BENIGN
-=INFO REPORT==== 19-Jan-2021::14:57:50.042293 ===
+=INFO REPORT==== 19-Jan-2021::16:43:42.297935 ===
     ipSrc: {192,168,43,241}
-    ipDst: {172,67,217,99}
-    portSrc: 60984
-    portDst: 443
-    protoTrans: {6,tcp}
-    protoService: https
-    numberOfPackets: 7
-    sizeBytes: 367
-    start: {14,57,19}
-    finish: {14,57,20}
-    prediction: DDoS
-=INFO REPORT==== 19-Jan-2021::14:57:54.896356 ===
+    ipDst: {162,159,200,123}
+    portSrc: 55815
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,43,11}
+    finish: {16,43,12}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:43:46.738933 ===
     ipSrc: {192,168,43,241}
     ipDst: {192,168,43,1}
     portSrc: undefined
@@ -1279,18 +31,174 @@
     protoService: undefined
     numberOfPackets: 2
     sizeBytes: 56
-    start: {14,57,24}
-    finish: {14,57,24}
+    start: {16,43,16}
+    finish: {16,43,16}
     prediction: BENIGN
-=INFO REPORT==== 19-Jan-2021::16:03:54.967389 ===
-    ipSrc: {192,168,43,1}
-    ipDst: {192,168,43,241}
+=INFO REPORT==== 19-Jan-2021::16:44:46.694974 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {162,159,200,123}
+    portSrc: 33118
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,44,16}
+    finish: {16,44,16}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:44:51.508955 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
     portSrc: undefined
     portDst: undefined
     protoTrans: {2054,arp}
     protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,44,21}
+    finish: {16,44,21}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:45:51.216500 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {162,159,200,123}
+    portSrc: 45284
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,45,21}
+    finish: {16,45,21}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:45:56.014030 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: undefined
+    portDst: undefined
+    protoTrans: {2054,arp}
+    protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,45,26}
+    finish: {16,45,26}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:47:28.003189 ===
+    ipSrc: {127,0,0,1}
+    ipDst: {127,0,0,1}
+    portSrc: 33709
+    portDst: 4369
+    protoTrans: {6,tcp}
+    protoService: undefined
+    numberOfPackets: 20
+    sizeBytes: 854
+    start: {16,46,57}
+    finish: {16,46,57}
+    prediction: DoS Hulk
+=INFO REPORT==== 19-Jan-2021::16:47:59.698972 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {162,159,200,123}
+    portSrc: 34689
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,47,29}
+    finish: {16,47,29}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:48:04.533965 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: undefined
+    portDst: undefined
+    protoTrans: {2054,arp}
+    protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,47,34}
+    finish: {16,47,34}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:48:48.411113 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: 68
+    portDst: 67
+    protoTrans: {17,udp}
+    protoService: 'dhcp-client'
+    numberOfPackets: 2
+    sizeBytes: 671
+    start: {16,48,18}
+    finish: {16,48,18}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:48:53.430575 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: undefined
+    portDst: undefined
+    protoTrans: {2054,arp}
+    protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,48,23}
+    finish: {16,48,23}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:50:08.193311 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {162,159,200,123}
+    portSrc: 59960
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,49,37}
+    finish: {16,49,38}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:50:13.045793 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: undefined
+    portDst: undefined
+    protoTrans: {2054,arp}
+    protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,49,43}
+    finish: {16,49,43}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:54:24.845880 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {162,159,200,123}
+    portSrc: 41517
+    portDst: 123
+    protoTrans: {17,udp}
+    protoService: ntp
+    numberOfPackets: 2
+    sizeBytes: 152
+    start: {16,53,54}
+    finish: {16,53,54}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:54:29.548846 ===
+    ipSrc: {192,168,43,241}
+    ipDst: {192,168,43,1}
+    portSrc: undefined
+    portDst: undefined
+    protoTrans: {2054,arp}
+    protoService: undefined
+    numberOfPackets: 2
+    sizeBytes: 56
+    start: {16,53,59}
+    finish: {16,53,59}
+    prediction: BENIGN
+=INFO REPORT==== 19-Jan-2021::16:56:22.991913 ===
+    ipSrc: {127,0,0,1}
+    ipDst: {127,0,0,1}
+    portSrc: 55692
+    portDst: 631
+    protoTrans: {6,tcp}
+    protoService: undefined
     numberOfPackets: 4
-    sizeBytes: 112
-    start: {16,1,23}
-    finish: {16,1,23}
+    sizeBytes: 160
+    start: {16,55,52}
+    finish: {16,55,52}
     prediction: BENIGN

@@ -1,5 +1,6 @@
 -module(optionsGraphic).
 -export([init/1,handle_info/2]).
+-define(ADJUSTDIR(Dir),case lists:last(Dir)/=$/ of true->Dir++"/";false->Dir end).
 -record(state,{dets,ets,window}).
 -include_lib("wx/include/wx.hrl").
 
@@ -115,7 +116,7 @@ handle_info({wx,7,_,{Btn,TextBox},_},State)->
 	case filelib:is_dir(Dir) of
 		true->
 			wxButton:disable(Btn),
-			options:dump_log(Dir),
+			options:dump_log(?ADJUSTDIR(Dir)),
 			wxButton:enable(Btn),
 			options:showMsg("DUMP DEI LOG TERMINATO");
 		false->
@@ -127,7 +128,7 @@ handle_info({wx,5,_,{Btns,TextBox},_},State)->
 	case filelib:is_dir(Dir) andalso whereis(dbHandler)/=undefined of
 		true->
 			[wxButton:disable(Btn)||Btn<-Btns],
-			dbHandler ! {create_new_dataset,Dir},
+			dbHandler ! {create_new_dataset,?ADJUSTDIR(Dir)},
 			receive 
 				created_new_dataset->options:showMsg("NUOVO DATASET CREATO");
 				invalid_dir->options:showMsg("CARTELLA DEI CHUNKS NON VALIDA,CONTROLLARE CHE SIANO TUTTI DEI CSV E CHE NE ESISTA ALMENO UNO!!")

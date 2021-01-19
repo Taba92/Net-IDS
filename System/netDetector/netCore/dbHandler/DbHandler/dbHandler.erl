@@ -47,7 +47,6 @@ handle_info({create_new_dataset,Dir},State)->
 	NewState=case is_valid_chunks_dir(Dir) of
 		true->
 			CurDir=filename:dirname(code:where_is_file(?FILE)),
-			DataFolder=CurDir++"/Dataset",
 			TargetsName=CurDir++"/Dataset/labels.txt",
 			DatasetName=CurDir++"/Dataset/Dataset.csv",
 			file:close(Dataset),
@@ -55,7 +54,6 @@ handle_info({create_new_dataset,Dir},State)->
 			file:delete(DatasetName),
 			file:delete(TargetsName),
 			merge_and_extract(Dir,DatasetName,TargetsName),
-			os:cmd("sudo "++CurDir++"/extractor.py "++Dir++" "++DataFolder),
 			{ok,NewDataset}=file:open(DatasetName,[read,append,raw,binary,{read_ahead,200000}]),
 			{ok,NewFileTargets}=file:open(TargetsName,[read]),
 			{_,Targets}=readFeaturesAndTargetNames(NewDataset,NewFileTargets),
@@ -102,9 +100,9 @@ copy_chunk({ok,Line},Chunk,NewDataset,Acc)->
 		true->copy_chunk(file:read_line(Chunk),Chunk,NewDataset,Acc);
 		false->file:write(NewDataset,Line),
 				Target=lists:last(ParsedLine),
-				NewAcc=case lists:member(Target,Acc) of
-						true->Acc;
-						false->Acc++[Target]
+				NewAcc=case (lists:member(Target,Acc)==false) and (Target/=" Label") of
+						true->Acc++[Target];
+						false->Acc
 					end,
 			   copy_chunk(file:read_line(Chunk),Chunk,NewDataset,NewAcc)
 	end.

@@ -6,10 +6,10 @@ get_window(Targets)->
 	Frame=wxFrame:new(wx:null(),0,"RECORD TRAINER"),
 	RdTextBox=wxTextCtrl:new(Frame,2,[{style, ?wxTE_MULTILINE bor ?wxTE_READONLY},{pos,{10,10}}]),
 	wxTextCtrl:setSize(RdTextBox,200,200),
-	wxStaticText:new(Frame,10,"ATTENZIONE A COSA SI SELEZIONA,\nPRIMA DI PREMERE IL TASTO!!",[{pos,{10,250}}]),
+	wxStaticText:new(Frame,10,"PAY ATTENTION TO THE SELECTION,\nBEFORE PRESSING THE BUTTON!!",[{pos,{10,250}}]),
 	Target=wxChoice:new(Frame,2,[{pos,{10,300}},{choices, Targets}]),
 	wxChoice:setSelection(Target,0),
-	SendDecision=wxButton:new(Frame,5, [{label, "INVIA"}, {pos,{10,350}}]),
+	SendDecision=wxButton:new(Frame,5, [{label, "SUBMIT"}, {pos,{10,350}}]),
 	wxButton:connect(SendDecision, command_button_clicked,[{userData,Target}]),
 	Frame.
 

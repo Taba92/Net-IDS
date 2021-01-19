@@ -19,7 +19,7 @@ init([])->
 			Frame=dbHandlerGraphic:get_window(Targets),
 			#state{graphic=Frame,dataset=Dataset,targets=FileTargets,training=Training};
 		false->
-			options:showMsg("ATTENZIONE, NON SONO STATI TROVATI I FILE DATI PER IL DBHANDLER\nINIZIALIZZARLI AL PIÙ PRESTO!!!!"),
+			options:showMsg("ATTENTION,NO DATA FILES FOUND FOR DBHANDLER\nINIZIALIZE THEM AS SOON AS POSSIBLE!!!!"),
 			#state{training=Training}
 		end,
 	{ok,State}.
@@ -172,6 +172,5 @@ writeLine(File,Pattern,TupleLine)when is_tuple(TupleLine)->
 			Record=lists:join(Pattern,tuple_to_list(TupleLine)),
 			file:write(File,Record),
 			file:write(File,"\n");
-		true->
-			exit("One element of line is not a string,will not write")
+		true->ok
 	end.

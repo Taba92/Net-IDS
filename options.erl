@@ -34,7 +34,7 @@ hot_code_reload()->
 	CompRes=os:cmd("./compile"),
 	case string:find(CompRes,"Warning")==nomatch andalso string:find(CompRes,"error")==nomatch of
 		true->lists:foreach(fun c:l/1,[Module||{Module,_}<-Modules]),
-				"HOT_CODE_RELOAD COMPLETATO CON SUCCESSO";
+				"HOT_CODE_RELOAD COMPLETATED";
 		_->CompRes
 	end.
 
@@ -72,14 +72,14 @@ set_runtime_config({training,Bool})when ?ISBOOLEAN(Bool)->
 	[{training,OldBool}]=ets:lookup(opts,training),
 	ets:insert(opts,{training,Bool}),
 	case OldBool/=Bool andalso whereis(dbHandler)/=undefined of
-		false->showMsg("TRAINING NON SETTATO:STESSA OPZIONE OPPURE DBHANDLER NON ATTIVO");
+		false->showMsg("TRAINING NO SET:SAME VALUE OR INACTIVE DBHANDLER");
 		true->dbHandler ! {change_train,Bool}
 	end;
 set_runtime_config({netdefense,Bool}) when ?ISBOOLEAN(Bool)->
 	[{netdefense,OldBool}]=ets:lookup(opts,netdefense),
 	ets:insert(opts,{netdefense,Bool}),
 	case OldBool/=Bool andalso whereis(nidsInit)/=undefined of
-		false->showMsg("NETDEFENSE NON SETTATO:OPZIONE GIÀ SETTATA OPPURE NIDS CORE NON ATTIVO");
+		false->showMsg("NETDEFENSE NO SET:SAME VALUE OR INACTIVE NIDS CORE");
 		true->case {OldBool,Bool} of
 				{false,true}->case ?ISCHILD(nidsInit,netDefender) of
 								true->supervisor:restart_child(nidsInit,netDefender);
@@ -89,14 +89,14 @@ set_runtime_config({netdefense,Bool}) when ?ISBOOLEAN(Bool)->
 			end
 	end;
 set_runtime_config(_)->
-	showMsg("OPZIONE NON VALIDA,RICONTROLLARE L'OPZIONE").
+	showMsg("INVALID OPTION,NOT SUPPORTED").
 
 set_disk_config(Dets,{training,Bool})when ?ISBOOLEAN(Bool)->
 	dets:insert(Dets,{training,Bool});
 set_disk_config(Dets,{netdefense,Bool})when ?ISBOOLEAN(Bool)->
 	dets:insert(Dets,{netdefense,Bool});
 set_disk_config(_,_)->
-	showMsg("OPZIONE NON VALIDA,RICONTROLLARE L'OPZIONE").
+	showMsg("INVALID OPTION,NOT SUPPORTED").
 
 showMsg(Msg)->
 	wxMessageDialog:showModal(wxMessageDialog:new(wx:null(),Msg)).

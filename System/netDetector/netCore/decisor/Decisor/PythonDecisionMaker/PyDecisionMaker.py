@@ -32,12 +32,16 @@ while len(line)>0:#finchè lo stdin è aperto da Erlang,invia almeno 1 byte(0x00
 				dataToErlang=struct.pack("b",1)
 			elif (func==2):
 				(isFinish,chunk)=(dataFromErlang[0],dataFromErlang[1:])
-				accuracy=brain.trainIntelligence(chunk)
-				accuracyFile.write(str(accuracy)+"\n")
+				brain.trainScaler(chunk)
+				dataToErlang=struct.pack("bb",2,isFinish)
+			elif (func==3):
+				(isFinish,chunk)=(dataFromErlang[0],dataFromErlang[1:])
+				score=brain.trainIntelligence(chunk)
+				accuracyFile.write("SCORE: "+str(score)+"\n")
 				if (isFinish==1):
 					accuracyFile.close()
 					brain.dump(curDir)
-				dataToErlang=struct.pack("bb",2,isFinish)
+				dataToErlang=struct.pack("bb",3,isFinish)
 			else:
 				recordPredicted=brain.decide(dataFromErlang)
 				dataToErlang=Parser.parsePyToErl(recordPredicted)

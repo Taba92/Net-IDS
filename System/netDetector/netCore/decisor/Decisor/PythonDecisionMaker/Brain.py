@@ -1,42 +1,47 @@
 from sklearn import preprocessing
 from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 import numpy
 import pickle
 import sys
 
 class Brain():
     def __init__(self):
-        self.scale=None
+        self.scaler=None
         self.model=None
         self.features=[]
-        self.target=[]
+        self.targets=[]
         self.features_names=[]
-        self.target_names=[]
+        self.targets_names=[]
 
     def new(self):
         self.scaler = preprocessing.MinMaxScaler()
-        self.model=MLPClassifier(hidden_layer_sizes=(45,),learning_rate='adaptive')
+        self.model=MLPClassifier(hidden_layer_sizes=(50,),activation='logistic',learning_rate='adaptive',learning_rate_init=0.0001,max_iter=500)
 
     def loadTargetsNames(self,targets):
-        self.target_names=numpy.empty((len(targets),),dtype="<U20")
+        self.targets_names=numpy.empty((len(targets),),dtype="<U20")
         for i,target in enumerate(targets):
-            self.target_names[i]=numpy.asarray(target,dtype="<U20")
+            self.targets_names[i]=numpy.asarray(target,dtype="<U20")
 
     def fromDatasetToNumpy(self,dataset):#dataset è una lista di liste
         numFeatures=len(self.features_names)
         numRecord=len(dataset)
         self.features=numpy.empty((numRecord,numFeatures),dtype="f")
-        self.target=numpy.empty((numRecord,),dtype="<U20")
+        self.targets=numpy.empty((numRecord,),dtype="<U20")
         for i,record in enumerate(dataset):
             self.features[i]=numpy.asarray(record[:-1], dtype="f")
-            self.target[i]=numpy.asarray(record[-1],dtype="<U20")
+            self.targets[i]=numpy.asarray(record[-1],dtype="<U20")
+
+    def trainScaler(self,dataset):
+        self.fromDatasetToNumpy(dataset)
+        self.scaler.partial_fit(self.features)
 
     def trainIntelligence(self,dataset):
         self.fromDatasetToNumpy(dataset)
-        self.scaler.partial_fit(self.features)
         self.features = self.scaler.transform(self.features)
-        self.model.partial_fit(self.features,self.target,self.target_names)
-        score=self.model.score(self.features,self.target)
+        self.model.partial_fit(self.features,self.targets,self.targets_names)
+        score=self.model.score(self.features,self.targets)
         return score
 
     def decide(self,recordFromErlang):

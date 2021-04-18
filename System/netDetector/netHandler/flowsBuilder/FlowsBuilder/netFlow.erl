@@ -14,6 +14,14 @@ handle_info({'DOWN',MonRef,_,Pid,_},State)->
 	#state{flowRecorders=FlowRecorders}=State,
 	NewFlowRecorders=lists:keydelete(Pid,2,FlowRecorders),
 	{noreply,State#state{flowRecorders=NewFlowRecorders}};
+handle_info(suspend_recorders,State)->
+	#state{flowRecorders=FlowRecorders}=State,
+	[sys:suspend(RecorderPid)||{_,RecorderPid}<-FlowRecorders],
+	{noreply,State};
+handle_info(resume_recorders,State)->
+	#state{flowRecorders=FlowRecorders}=State,
+	[sys:resume(RecorderPid)||{_,RecorderPid}<-FlowRecorders],
+	{noreply,State};
 handle_info(PacketData,State)->
 	FlowId=flowUtils:getFlowId(PacketData),
 	#state{flowRecorders=FlowRecorders}=State,

@@ -22,7 +22,7 @@ handle_info({FlowId,Flow},State)->%gli arriva un flusso finito
 							featuresExtractor ! CommPackets,
 							lists:keydelete(DualFlowId,1,Flows)%eliminalo
 					end;
-			   true->
+			   true->%%è un flusso "senza direzione"
 					CommPackets=lists:sort(fun flowUtils:order/2,Flow),%%crea la lista di tutti i pacchetti della comunicazione in ordine di tempo
 					featuresExtractor ! CommPackets,
 					Flows

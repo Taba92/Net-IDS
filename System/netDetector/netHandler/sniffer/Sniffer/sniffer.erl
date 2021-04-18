@@ -1,5 +1,5 @@
 -module(sniffer).
--export([init/0,init/1,handle_continue/2]).
+-export([init/0,init/1,handle_info/2,handle_continue/2]).
 -include("$PWD/Headers/packetFlow.hrl").
 -on_load(load_nif/0).
 
@@ -8,13 +8,18 @@ load_nif()->
 	erlang:load_nif(CurDir++"/snifNif", 0).
 
 init()->
-	gen_server:start_link(?MODULE,[],[]).
+	gen_server:start_link({local,sniffer},?MODULE,[],[]).
 init([])->
-	{ok,null,{continue,null}}.
+	{ok,null,{continue,sniff}}.
 
-handle_continue(_,_)->
+handle_continue(sniff,_)->
+	self() ! sniff,
+	{noreply,null}.
+
+handle_info(sniff,_)->
 	sniffing(),
-	{noreply,null,{continue,null}}.
+	self() ! sniff,
+	{noreply,null}.
 
 sniffing()->
 	RawFrame=sniff(),

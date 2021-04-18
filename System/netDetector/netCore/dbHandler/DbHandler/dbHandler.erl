@@ -40,7 +40,11 @@ handle_info(fit,State)->
 	{Features,Targets}=readFeaturesAndTargetNames(Dataset,FileTargets),
 	erlDecisor ! {loadTargets,[Features,Targets]},
 	receive {erlDecisor,ackTargets}->ok end,
-	readDataset(0,Dataset,ets:new(chunk,[duplicate_bag])),
+	readDataset(0,Dataset,ets:new(chunk,[duplicate_bag]),scaler),
+	file:position(Dataset,bof),
+	file:read_line(Dataset),
+	receive {erlDecisor,ackScaler}->ok end,
+	readDataset(0,Dataset,ets:new(chunk,[duplicate_bag]),model),
 	{noreply,State};
 handle_info({create_new_dataset,Dir},State)->
 	#state{dataset=Dataset,targets=FileTargets}=State,
@@ -119,17 +123,17 @@ is_valid_chunks_dir(Dir)->
 	end.
 
 
-readDataset(SeqNumber,File,Ets)->
+readDataset(SeqNumber,File,Ets,Tag)->
 	IsFinish=readDatasetChunk(File,file:read_line(File),Ets,0),
 	case IsFinish of
 		otherLines->
 			DataChunk=ets:tab2list(Ets),
-			erlDecisor ! {loadDataset,otherLines,DataChunk},
+			erlDecisor ! {loadDataset,otherLines,DataChunk,Tag},
 			ets:delete_all_objects(Ets),
-			readDataset(SeqNumber+1,File,Ets);
+			readDataset(SeqNumber+1,File,Ets,Tag);
 		eof->
 			DataChunk=ets:tab2list(Ets),
-			erlDecisor ! {loadDataset,SeqNumber,eof,DataChunk},
+			erlDecisor ! {loadDataset,SeqNumber,eof,DataChunk,Tag},
 			ets:delete(Ets)
 	end.
 

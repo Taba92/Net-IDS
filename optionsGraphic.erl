@@ -100,8 +100,12 @@ handle_info({wx,3,_,Btns,_},State)->
 		true->options:showMsg("MODEL REFITTING NO AVAILABLE TEMPORALY");
 		false->
 			[wxButton:disable(Btn)||Btn<-Btns],
+			sys:suspend(sniffer,5000),%%sospendo lo sniffing
+			netFlow ! suspend_recorders,%%sospendo i recorder dei flussi
 			dbHandler ! fit,
 			receive fitted->[wxButton:enable(Btn)||Btn<-Btns] end,
+			sys:resume(sniffer,5000),
+			netFlow ! resume_recorders,%%riattivo i recorders dei flussi
 			options:showMsg("MODEL REFITTED")
 	end,
 	{noreply,State};

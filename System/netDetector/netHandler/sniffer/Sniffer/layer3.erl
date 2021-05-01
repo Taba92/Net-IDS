@@ -15,7 +15,8 @@ handle_info({PacketData,Datagram},_)->
 			ok;%nel caso il protocollo di livello 3 non fosse supportato,allora lo scarto!
 		false->
 			{SizeDatagramHeader,DatagramHeader}= unpack(ProtoDatagram,list_to_binary(RawDatagramHeader)),
-			case length(DatagramPayload)==0 of
+			%se il payload del datagramma è vuoto oppure è un pacchetto di livello 3
+			case (length(DatagramPayload)==0) orelse (maps:is_key(protoFragment,DatagramHeader) == false) of
 			true->
 				netProcesser ! PacketData#packet{sizeDatagramHeader=SizeDatagramHeader,datagramHeader=DatagramHeader,sizeFragmentHeader=0,sizePayload=0};%il pacchetto si ferma a questo livello!
 			false->
@@ -58,7 +59,6 @@ unpack(2048,IpHeader)->
 				flags=>Flags,frgOff=>FrgOff,ttl=>Ttl,protoFragment=>ProtoFragment,
 				checksum=>CheckSum,ipSrc=>IpSrc,ipDst=>IpDst,options=>Options}}
 	end;
-
 unpack(2054,ArpHeader)->
 	<<HwType:16,ProtoType:16,HLen:8,Plen:8,Op:16,Sha:48,Spa:32,Tha:48,Tpa:32>> =ArpHeader,
 	{ok,SenderIp}=inet:parse_address(integer_to_list(Spa)),

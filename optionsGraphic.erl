@@ -52,9 +52,9 @@ setupUpdatesPanel(Parent)->
   	Dataset=wxButton:new(UpdatesPanel,5, [{label, "NEW DATASET"}, {pos,{20, 250}}]),
 	ChunksFolder=wxTextCtrl:new(UpdatesPanel,?wxID_ANY,[{pos,{170, 250}}]),
 	wxTextCtrl:setSize(ChunksFolder,210,37),
-	wxButton:connect(Dataset, command_button_clicked,[{userData,{[Fit,HotReload,Dataset],ChunksFolder}}]),
-	wxButton:connect(Fit, command_button_clicked,[{userData,[Fit,HotReload,Dataset]}]),
-	wxButton:connect(HotReload, command_button_clicked,[{userData,{[Fit,HotReload,Dataset],Recompilaton}}]),
+	wxButton:connect(Dataset, command_button_clicked,[{userData,ChunksFolder}]),
+	wxButton:connect(Fit, command_button_clicked),
+	wxButton:connect(HotReload, command_button_clicked,[{userData,Recompilaton}]),
   	UpdatesPanel.
 
 setupUtilsPanel(Parent)->
@@ -64,7 +64,7 @@ setupUtilsPanel(Parent)->
 	FolderLog=wxTextCtrl:new(UtilsPanel,?wxID_ANY,[{pos,{170, 80}}]),
 	wxTextCtrl:setSize(FolderLog,210,37),
 	Log=wxButton:new(UtilsPanel,7, [{label, "DUMP LOG"}, {pos,{20, 80}}]),
-	wxButton:connect(Log, command_button_clicked,[{userData,{Log,FolderLog}}]),
+	wxButton:connect(Log, command_button_clicked,[{userData,FolderLog}]),
 	UtilsPanel.
 
 handle_info(restart_window,State)->
@@ -95,49 +95,49 @@ handle_info({wx,6,_,_,_},State)->
 		_->ok
 	end,
 	{noreply,State};
-handle_info({wx,3,_,Btns,_},State)->
+handle_info({wx,3,_,_,_},State)->
 	case (whereis(dbHandler)==undefined) or (whereis(erlDecisor)==undefined) of
 		true->options:showMsg("MODEL REFITTING NO AVAILABLE TEMPORALY");
 		false->
-			[wxButton:disable(Btn)||Btn<-Btns],
+			wxWindow:disable(State#state.window),
 			sys:suspend(sniffer,5000),%%sospendo lo sniffing
 			netFlow ! suspend_recorders,%%sospendo i recorder dei flussi
 			dbHandler ! fit,
-			receive fitted->[wxButton:enable(Btn)||Btn<-Btns] end,
+			receive fitted->wxWindow:enable(State#state.window) end,
 			sys:resume(sniffer,5000),
 			netFlow ! resume_recorders,%%riattivo i recorders dei flussi
 			options:showMsg("MODEL REFITTED")
 	end,
 	{noreply,State};
-handle_info({wx,4,_,{Btns,TextBox},_},State)->
-	[wxButton:disable(Btn)||Btn<-Btns],
+handle_info({wx,4,_,TextBox,_},State)->
+	wxWindow:disable(State#state.window),
 	ValueRet=options:hot_code_reload(),
 	wxTextCtrl:setValue(TextBox,ValueRet),
-	[wxButton:enable(Btn)||Btn<-Btns],
+	wxWindow:enable(State#state.window),
 	{noreply,State};
-handle_info({wx,7,_,{Btn,TextBox},_},State)->
+handle_info({wx,7,_,TextBox,_},State)->
 	Dir=wxTextCtrl:getValue(TextBox),
 	case filelib:is_dir(Dir) of
 		true->
-			wxButton:disable(Btn),
+			wxWindow:disable(State#state.window),
 			options:dump_log(?ADJUSTDIR(Dir)),
-			wxButton:enable(Btn),
+			wxWindow:enable(State#state.window),
 			options:showMsg("LOG DUMPING TERMINATED");
 		false->
 			options:showMsg("INVALID PATH OR UNEXPECTED FOLDER")
 	end,
 	{noreply,State};
-handle_info({wx,5,_,{Btns,TextBox},_},State)->
+handle_info({wx,5,_,TextBox,_},State)->
 	Dir=wxTextCtrl:getValue(TextBox),
 	case filelib:is_dir(Dir) andalso whereis(dbHandler)/=undefined of
 		true->
-			[wxButton:disable(Btn)||Btn<-Btns],
+			wxWindow:disable(State#state.window),
 			dbHandler ! {create_new_dataset,?ADJUSTDIR(Dir)},
 			receive 
 				created_new_dataset->options:showMsg("NEW DATASET CREATED");
 				invalid_dir->options:showMsg("INVALID CHUNKS FOLDER,CHECK THAT ALL ARE CSV FILES AND THAT AT LEAST ONE EXISTS!!")
 			end,
-			[wxButton:enable(Btn)||Btn<-Btns];
+			wxWindow:enable(State#state.window);
 		false->
 			options:showMsg("INVALID PATH OR DBHANDLER INACTIVE")
 	end,

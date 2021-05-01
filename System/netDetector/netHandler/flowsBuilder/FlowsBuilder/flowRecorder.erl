@@ -2,7 +2,7 @@
 -export([init/1,handle_info/2]).
 -include("$PWD/Headers/packetFlow.hrl").
 -record(state,{flowId,flow}).
--define(FLOWEXPIRED,30000).
+-define(FLOWEXPIRED,20000).
 
 init([FlowId])->
 	State=#state{flowId=FlowId,flow=[]},

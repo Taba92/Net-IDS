@@ -1,5 +1,0 @@
--define(EXEC(Cmd),os:cmd(Cmd)).
--define(CMD,"nft ").
--define(STRING(Atom),atom_to_list(Atom)).
--define(STRINGOPTS(List),"-"++lists:flatten([atom_to_list(Opt)||Opt<-List])).
--define(WS,++" "++).

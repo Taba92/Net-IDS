@@ -104,7 +104,7 @@ copy_chunk({ok,Line},Chunk,NewDataset,Acc)->
 		true->copy_chunk(file:read_line(Chunk),Chunk,NewDataset,Acc);
 		false->file:write(NewDataset,Line),
 				Target=lists:last(ParsedLine),
-				NewAcc=case (lists:member(Target,Acc)==false) and (Target/=" Label") of
+				NewAcc=case (lists:member(Target,Acc)==false) and (Target /=" Label") of
 						true->Acc++[Target];
 						false->Acc
 					end,

@@ -1,6 +1,12 @@
 # IDS
+WHAT IS IT:
+This project consists of a stream-based network HIDS for intrusion detection using machine learning classification.
+Currently work only on linux.
 
-An network IDS written in Erlang.
+INSTALLATION:
+First of all clone the repo on your local.
+After this, go inside the newly cloned folder and you will find an erlang script called "nids".
+Get it and put it in any path (preferably in / usr / bin). It allows a basic management of the nids (in the documentation chapter 2 we explain how to use the command).
 
 CURRENTLY IN DEBUGGING BUT FINISHED.
 

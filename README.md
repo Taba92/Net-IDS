@@ -6,6 +6,7 @@ Currently work only on linux.
 PREREQUISITES:
 A folder on your computer with dataset chunks.
 Inside this folder MUST BE presente at least a csv file(with extension in the name for all files) and every chunk MUST HAVE the header of the csv as the first line.
+Erlang OTP 22 or greater.
 
 NOTE: For documentation check the file nids_documentation.pdf
 

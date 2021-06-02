@@ -7,6 +7,8 @@ PREREQUISITES:
 A folder on your computer with dataset chunks.
 Inside this folder MUST BE presente at least a csv file(with extension in the name for all files) and every chunk MUST HAVE the header of the csv as the first line.
 
+NOTE: For documentation check the file nids_documentation.pdf
+
 INSTALLATION:
 First of all clone the repo on your local.
 After this, go inside the newly cloned folder and you will find an erlang script called "nids".
@@ -25,7 +27,7 @@ At present the nids is functioning.
 Obviously being very recent it is still in the testing and debugging phase, so bugs or anomalous behavior may still emerge.
 For now, I list the main points of improvement that have emerged personally:
     1) Model recognition needs to be improved (currently at a low-medium accuracy rate).
-    2) The reloading of the hot code must also involve the graphic part of the NIDS, i.e. if I modify a graphic component and reload the code, it must update the relative graphics).
+    2) The hot code must also involve the graphic part of the NIDS, i.e. if I modify a graphic component and reload the code, it must update the relative graphics).
     3) Automatic method for nids script installation.
 These points are considered to be short-term todo.
 

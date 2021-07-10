@@ -30,5 +30,6 @@ For now, I list the main points of improvement that have emerged personally:
     1) Model recognition needs to be improved (currently at a low-medium accuracy rate).
     2) The hot code must also involve the graphic part of the NIDS, i.e. if I modify a graphic component and reload the code, it must update the relative graphics).
     3) Automatic method for nids script installation.
+    4) Cookie and node name in the handler script no cabled in the code.
 These points are considered to be short-term todo.
 

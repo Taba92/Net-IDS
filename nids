@@ -1,43 +1,20 @@
-#!/usr/bin/env escript
-%%! -sname script -setcookie nidstabanellicookie
--define(FOLDER_NIDS,"/opt/NIDS/").
-
-main(["compile"]) ->
-    file:set_cwd(?FOLDER_NIDS),
-    Ret=os:cmd("./compile"),
-    io:fwrite("~p~n",[Ret]);
-main(["start"])->
-	Nids=get_nids(),
-	case exist_nids(Nids) of
-		false->
-			file:set_cwd(?FOLDER_NIDS),
-			os:cmd("sudo erl -detached -sname nids -setcookie nidstabanellicookie -run sysInit init");
-		true->io:fwrite("NIDS GIA' IN ATTIVITA'~n")
-	end;
-main(["stop"])->
-	Nids=get_nids(),
-	case exist_nids(Nids) of
-		true->rpc:call(Nids,erlang,halt,[]);
-		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
-	end;
-main(["opt"])->
-	Nids=get_nids(),
-	case exist_nids(Nids) of
-		true->case rpc:call(Nids,erlang,where_is,[options]) of
-				undefined->io:fwrite("IL PROCESSO ~p SUL NODO ~p NON ESISTE~n",[options],[Nids]);
-				_->{options,Nids} ! restart_window
-			  end;
-		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
-	end;
-main(_) ->
-    io:fwrite("SEQUENZA DI COMANDI NON RICONOSCIUTA~n").
-
-get_nids()->
-	{ok,Name}=inet:gethostname(),
-	list_to_atom("nids@"++Name).
-
-exist_nids(Nids)->
-	case net_adm:ping(Nids) of
-		pong->true;
-		pang->false
-	end.
+cd "PathToClonedRepo"
+case $1 in
+  compile)
+    ./nidsManager compile
+    ;;
+  start)
+    ./nidsManager start
+    ;;
+  stop)
+    ./nidsManager stop
+    ;;
+  opt)
+    ./nidsManager opt
+    ;;
+  config)
+    ./nidsManager config $2 $3
+    ;;
+  *)
+  echo -n " COMMAND SEQUENCE UNKNOWN"
+esac

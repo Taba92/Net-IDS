@@ -13,8 +13,12 @@ NOTE: For documentation check the file nids_documentation.pdf
 INSTALLATION:
 First of all clone the repo on your local.
 After this, go inside the newly cloned folder and you will find an erlang script called "nids".
-Get it and put it in any path (preferably in / usr / bin). It allows a basic management of the nids (in the documentation, under chapter 2, will be explained how to use the command).
-Then open the script "nids" just moved  and modify the macro FOLDER_NIDS to point at the folder of YOUR cloned repo(change the path to the path of your cloned repo).
+Get it and put it in any path (preferably in / usr / bin). 
+It allows a basic management of the nids, acting as an interface to *nidsManager* script.
+**NidsManager script it is the true manager of the nids.**
+In the documentation, under chapter 2, will be explained how to use the command.
+Then open the script *nids* just moved and modify the cd "PathToRepo" line to point at the folder of YOUR cloned repo(change the path to the path of your cloned repo).
+***It is strongly recommended to change AT LEAST the nids cookie from the default one through the nids config command (see documentation chapter 2).*** 
 Now you can setup the nids.
 First type in a shell the command "sudo nids start". Now will appear the nids graphic interface.
 Go to the "Run-time updates" tab, and type in the textbox near the button "New dataset" the folder of your chunks. Then click the "New dataset button" and wait the creation of files used by the nids.

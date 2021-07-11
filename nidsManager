@@ -1,0 +1,57 @@
+#!/usr/bin/env escript
+%%! -sname script 
+
+main(["compile"]) ->
+    Ret=os:cmd("./compile"),
+    io:fwrite("~p~n",[Ret]);
+main(["start"])->
+	{Cookie,NidsName} = get_start_config(),
+	erlang:set_cookie(node(),Cookie),
+	Nids=get_nids(NidsName),
+	case exist_nids(Nids) of
+		false->
+			Cmd = "sudo erl -detached -sname "++NidsName++" -setcookie "++atom_to_list(Cookie)++" -run sysInit init",
+			os:cmd(Cmd);
+		true->io:fwrite("NIDS GIA' IN ATTIVITA'~n")
+	end;
+main(["stop"])->
+	{Cookie,NidsName} = get_start_config(),
+	erlang:set_cookie(node(),Cookie),
+	Nids=get_nids(NidsName),
+	case exist_nids(Nids) of
+		true->rpc:call(Nids,erlang,halt,[]);
+		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
+	end;
+main(["opt"])->
+	{Cookie,NidsName} = get_start_config(),
+	erlang:set_cookie(node(),Cookie),
+	Nids=get_nids(NidsName),
+	case exist_nids(Nids) of
+		true->case rpc:call(Nids,erlang,where_is,[options]) of
+				undefined->io:fwrite("IL PROCESSO ~p SUL NODO ~p NON ESISTE~n",[options],[Nids]);
+				_->{options,Nids} ! restart_window
+			  end;
+		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
+	end;
+main(["config"|T])->
+	{ok,ConfigFile} = file:open("nidsStartConfig",[write]),
+	[Cookie,NidsName] = T,
+	file:write(ConfigFile,Cookie++":"++NidsName),
+	file:close(ConfigFile).
+
+get_start_config()->
+	{ok,ConfigFile} = file:open("nidsStartConfig",[read]),
+	{ok,Configs} = file:read_line(ConfigFile),
+	[Cookie,NidsName] = string:split(Configs,":",all),
+	file:close(ConfigFile),
+	{list_to_atom(Cookie),NidsName}.
+
+get_nids(NidsName)->
+	{ok,Name}=inet:gethostname(),
+	list_to_atom(NidsName ++ "@" ++ Name).
+
+exist_nids(Nids)->
+	case net_adm:ping(Nids) of
+		pong->true;
+		pang->false
+	end.

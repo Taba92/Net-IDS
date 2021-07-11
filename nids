@@ -13,7 +13,9 @@ case $1 in
     ./nidsManager opt
     ;;
   config)
+    ./nidsManager stop
     ./nidsManager config $2 $3
+    ./nidsManager start
     ;;
   *)
   echo -n " COMMAND SEQUENCE UNKNOWN"

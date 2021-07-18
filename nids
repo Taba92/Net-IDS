@@ -1,16 +1,24 @@
 cd "PathToClonedRepo"
 case $1 in
-  compile)
-    ./nidsManager compile
-    ;;
   start)
-    ./nidsManager start
+    CMD=$(./nidsManager start)
+    if [[ "$CMD" == "FALSE" ]]; then
+      echo "NIDS ATTIVO"
+    else
+        ERL_FLAGS=" -args_file vm.args " rebar3 shell
+    fi
     ;;
   stop)
-    ./nidsManager stop
+    CMD=$(./nidsManager stop)
+    if [[ "$CMD" == "FALSE" ]]; then
+      echo "NIDS ATTIVO"
+    fi
     ;;
   opt)
-    ./nidsManager opt
+    CMD=$(./nidsManager opt)
+    if [[ "$CMD" == "FALSE" ]]; then
+      echo "ERRORE: NIDS NON ATTIVO O PROCESSO HANDLER NON PRESENTE SUL NIDS"
+    fi
     ;;
   config)
     ./nidsManager stop

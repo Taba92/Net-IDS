@@ -1,26 +1,22 @@
 #!/usr/bin/env escript
 %%! -sname script 
 
-main(["compile"]) ->
-    Ret=os:cmd("./compile"),
-    io:fwrite("~p~n",[Ret]);
 main(["start"])->
 	{Cookie,NidsName} = get_start_config(),
 	erlang:set_cookie(node(),Cookie),
 	Nids=get_nids(NidsName),
 	case exist_nids(Nids) of
-		false->
-			Cmd = "sudo erl -detached -sname "++NidsName++" -setcookie "++atom_to_list(Cookie)++" -run sysInit init",
-			os:cmd(Cmd);
-		true->io:fwrite("NIDS GIA' IN ATTIVITA'~n")
+		false-> io:fwrite("TRUE");
+		true->io:fwrite("FALSE")
 	end;
 main(["stop"])->
 	{Cookie,NidsName} = get_start_config(),
 	erlang:set_cookie(node(),Cookie),
 	Nids=get_nids(NidsName),
 	case exist_nids(Nids) of
-		true->rpc:call(Nids,erlang,halt,[]);
-		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
+		true->rpc:call(Nids,erlang,halt,[]),
+			io:fwrite("TRUE");
+		false->io:fwrite("FALSE")
 	end;
 main(["opt"])->
 	{Cookie,NidsName} = get_start_config(),
@@ -28,15 +24,21 @@ main(["opt"])->
 	Nids=get_nids(NidsName),
 	case exist_nids(Nids) of
 		true->case rpc:call(Nids,erlang,where_is,[options]) of
-				undefined->io:fwrite("IL PROCESSO ~p SUL NODO ~p NON ESISTE~n",[options],[Nids]);
-				_->{options,Nids} ! restart_window
+				undefined->io:fwrite("FALSE");
+				_->{options,Nids} ! restart_window,
+					io:fwrite("TRUE")
 			  end;
-		false->io:fwrite("NODO ~p NON ESISTE~n",[Nids])
+		false->io:fwrite("FALSE")
 	end;
 main(["config"|T])->
 	{ok,ConfigFile} = file:open("nidsStartConfig",[write]),
+	{ok,VmConfig} = file:open("vm.args",[write]),
 	[Cookie,NidsName] = T,
-	file:write(ConfigFile,Cookie++":"++NidsName),
+	file:write(ConfigFile,Cookie ++ ":" ++ NidsName),
+	io:format(VmConfig, "~s~n", ["-setcookie " ++ Cookie]),
+	io:format(VmConfig, "~s~n", ["-sname " ++ NidsName]),
+	io:format(VmConfig, "~s~n", ["-detached"]),
+	file:close(VmConfig),
 	file:close(ConfigFile).
 
 get_start_config()->

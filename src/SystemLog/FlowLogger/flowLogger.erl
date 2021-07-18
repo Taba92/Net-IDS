@@ -1,6 +1,7 @@
 -module(flowLogger).
 -export([config/0,log/2,adding_handler/1]).
 -include("../include/packetFlow.hrl").
+-define(LOGPATH, code:priv_dir(nids) ++ "/flows.log").
 
 adding_handler(Config) ->
 	{ok,Config}.
@@ -12,7 +13,7 @@ log(LogEvent,Config)->
 	file:write_file(FileName,String,[append]).
 
 config()->
-	#{config => #{file => "../priv/flows.log"},
+	#{config => #{file => ?LOGPATH},
 		level=>info,
 		filters=>[{flowFilter,{fun funFilter/2,null}}],
 		formatter=>{logger_formatter,#{legacy_header=>true,single_line=>false}}

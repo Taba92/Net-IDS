@@ -1,7 +1,7 @@
 -module(dbHandler).
 -export([init/0,init/1,handle_info/2]).
 -record(state,{graphic,dataset,targets,training}).
--define(DATASET,"../priv/Dataset").
+-define(DATASET, code:priv_dir(nids) ++ "/Dataset").
 
 init()->
 	gen_server:start_link({local,dbHandler},?MODULE,[],[]).

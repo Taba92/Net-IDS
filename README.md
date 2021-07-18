@@ -36,5 +36,6 @@ For now, I list the main points of improvement that have emerged personally:\
     3) Add logging for run-time configuration from GUI.\
     4) Improve efficienty of model fitting.\
     5) Introduce hot-code reload for application.\
+    6) Rewrite documentation.\
 These points are considered to be short-term todo.
 

@@ -2,10 +2,8 @@
 -behaviour(supervisor).
 -export([init/0,init/1]).
 
-init()->
-	CurDir=filename:dirname(code:where_is_file(?FILE)),
-	code:add_patha(CurDir++"/Sniffer/"),
-	supervisor:start_link({local,snifferWatcher},?MODULE,[]).
+init()->supervisor:start_link({local,snifferWatcher},?MODULE,[]).
+
 init([])->
 	SupFlags = #{strategy=>one_for_one,intensity=>10,period=>1},
     ChildSpecs = [

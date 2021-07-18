@@ -48,16 +48,11 @@ setupSettingsPanel(Parent,Dets)->
 setupUpdatesPanel(Parent)->
   	UpdatesPanel = wxPanel:new(Parent),
   	Fit=wxButton:new(UpdatesPanel,3, [{label, "FIT"}, {pos,{20, 30}}]),
-	%HOT CODE RELOAD FIX
-  	%HotReload=wxButton:new(UpdatesPanel,4, [{label, "HOT CODE RELOAD"}, {pos,{20, 80}}]),
-  	%Recompilaton= wxTextCtrl:new(UpdatesPanel,?wxID_ANY,[{style, ?wxTE_MULTILINE bor ?wxTE_READONLY},{pos,{170,80}}]),
-  	%wxTextCtrl:setSize(Recompilaton,300,150),
   	Dataset=wxButton:new(UpdatesPanel,5, [{label, "NEW DATASET"}, {pos,{20, 250}}]),
 	ChunksFolder=wxTextCtrl:new(UpdatesPanel,?wxID_ANY,[{pos,{170, 250}}]),
 	wxTextCtrl:setSize(ChunksFolder,210,37),
 	wxButton:connect(Dataset, command_button_clicked,[{userData,ChunksFolder}]),
 	wxButton:connect(Fit, command_button_clicked),
-	%wxButton:connect(HotReload, command_button_clicked,[{userData,Recompilaton}]),
   	UpdatesPanel.
 
 setupUtilsPanel(Parent)->
@@ -112,13 +107,6 @@ handle_info({wx,3,_,_,_},State)->
 			options:showMsg("MODEL REFITTED")
 	end,
 	{noreply,State};
-%HOT CODE RELOAD FIX
-%handle_info({wx,4,_,TextBox,_},State)->
-%	wxWindow:disable(State#state.window),
-%	ValueRet=options:hot_code_reload(),
-%	wxTextCtrl:setValue(TextBox,ValueRet),
-%	wxWindow:enable(State#state.window),
-%	{noreply,State};
 handle_info({wx,7,_,TextBox,_},State)->
 	Dir=wxTextCtrl:getValue(TextBox),
 	case filelib:is_dir(Dir) of

@@ -1,7 +1,7 @@
 -module(options).
 -export([file_configs/0,load_configs/1,reset_configs/1,list_configs/1,set_config/2]).
 -export([dump_log/1,showMsg/1,format/1]).
--define(CONFIGFILE, "../priv/config").
+-define(CONFIGFILE, code:priv_dir(nids) ++ "/config").
 -define(ROOT,nids_app_sup).%indica il nome della radice dell'albero dell'applicazione
 -define(ISRUNTIME(),whereis(?ROOT)/=undefined).
 -define(ISBOOLEAN(Bool),Bool==true;Bool==false).
@@ -11,8 +11,8 @@ dump_log(Dir)->
 	DirOut=Dir++"/"++createName(),
 	file:make_dir(DirOut),
 	Files=["flows.log","logsErr.log","packets.log","sysLog.log"],
-	[file:copy("../priv/"++File,DirOut++"/"++filename:basename(File))||File<-Files],
-	[file:write_file("../priv/"++File,"")||File<-Files].
+	[file:copy(code:priv_dir(nids) ++ "/" ++ File,DirOut++"/"++filename:basename(File))||File<-Files],
+	[file:write_file(code:priv_dir(nids) ++ "/" ++ File,"")||File<-Files].
 
 createName()->
 	{Data,Ora}=erlang:localtime(),
@@ -26,17 +26,6 @@ format([],Acc)->Acc;
 format([{Key,Value}|T],Acc)->
 	NewAcc=Acc++atom_to_list(Key)++" : "++atom_to_list(Value)++"\n",
 	format(T,NewAcc).
-
-%HOT CODE RELOAD FIX
-%hot_code_reload()->
-%	CurDir=filename:dirname(code:which(?MODULE)),
-%	Pred=fun(Path)->Path/=preloaded andalso lists:prefix(CurDir,Path) end,
-%	Modules=[{Module,Path}||{Module,Path}<-code:all_loaded(),Pred(Path)],
-%	CompRes=make:all(),
-%	case string:find(CompRes,"Warning")==nomatch andalso string:find(CompRes,"error")==nomatch of
-%%				"HOT_CODE_RELOAD COMPLETED";
-%		_->CompRes
-%	end.
 
 default_configs()->
 	[{training,false},{netdefense,true}].

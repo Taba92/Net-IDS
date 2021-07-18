@@ -1,11 +1,11 @@
 -module(sniffer).
 -export([init/0,init/1,handle_info/2,handle_continue/2]).
 -include("../include/packetFlow.hrl").
--define(NIFDIR,"../priv").
+-define(NIFPATH, code:priv_dir(nids) ++ "/snifNif").
 -on_load(load_nif/0).
 
 load_nif()->
-	erlang:load_nif(?NIFDIR++"/snifNif", 0).
+	erlang:load_nif(?NIFPATH, 0).
 
 init()->
 	gen_server:start_link({local,sniffer},?MODULE,[],[]).

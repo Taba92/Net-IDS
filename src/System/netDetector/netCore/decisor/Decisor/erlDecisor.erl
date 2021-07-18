@@ -1,7 +1,7 @@
 -module(erlDecisor).
 -export([handle_info/2,init/0,init/1]).
 -record(state,{flows,infitting,chunkNum,port}).
--define(PYTHON, "../priv/PythonDecisionMaker").
+-define(PYTHON, code:priv_dir(nids) ++ "/PythonDecisionMaker").
 
 init() ->
     gen_server:start_link({local,erlDecisor},?MODULE,[],[]).

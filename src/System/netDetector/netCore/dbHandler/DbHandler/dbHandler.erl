@@ -52,10 +52,7 @@ handle_info({create_new_dataset,Dir},State)->
 		true->
 			TargetsName=?DATASET++"/labels.txt",
 			DatasetName=?DATASET++"/Dataset.csv",
-			file:close(Dataset),
-			file:close(FileTargets),
-			file:delete(DatasetName),
-			file:delete(TargetsName),
+			close_files(Dataset,DatasetName,FileTargets,TargetsName),
 			merge_and_extract(Dir,DatasetName,TargetsName),
 			{ok,NewDataset}=file:open(DatasetName,[read,append,raw,binary,{read_ahead,200000}]),
 			{ok,NewFileTargets}=file:open(TargetsName,[read]),
@@ -71,6 +68,16 @@ handle_info({change_train,Bool},State)->
 	{noreply,State#state{training=Bool}};
 handle_info(_,State)->
 	{noreply,State}.
+
+close_files(Dataset,DatasetName,Targets,TargetsName)->
+	case filelib:is_file(TargetsName) andalso filelib:is_file(DatasetName) of
+		true->
+			file:close(Dataset),
+			file:close(Targets),
+			file:delete(DatasetName),
+			file:delete(TargetsName);
+		false->ok
+	end.
 
 merge_and_extract(ChunksDir,DatasetPath,TargetsPath)->
 	{ok,FilesNames}=file:list_dir(ChunksDir),

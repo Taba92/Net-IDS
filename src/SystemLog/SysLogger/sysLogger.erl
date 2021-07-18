@@ -1,6 +1,5 @@
 -module(sysLogger).
 -export([config/0,log/2,adding_handler/1]).
--include("../include/log.hrl").
 
 adding_handler(Config) ->
 	sysAnalyzer:init(),
@@ -13,7 +12,7 @@ log(LogEvent,Config)->
 	file:write_file(FileLog,String,[append]).
 
 config()->
-	#{config => #{errLog => ?LOGDIR++"/sysLog.log"},
+	#{config => #{errLog => "../priv/sysLog.log"},
 		level=>error,
 		filters=>[{packetFilter,{fun funFilter/2,null}}],
 		formatter=>{logger_formatter,#{legacy_header=>true,single_line=>false}}

@@ -1,6 +1,5 @@
 -module(logLogger).
 -export([log/2,adding_handler/1,config/0]).
--include("../include/log.hrl").
 
 adding_handler(Config) ->
 	{ok,Config}.
@@ -12,7 +11,7 @@ log(LogEvent,Config)->
 	file:write_file(FileName,String,[append]).
 
 config()->
-	#{config => #{file => ?LOGDIR++"/logsErr.log"},
+	#{config => #{file => "../priv/logsErr.log"},
 		level=>debug,
 		filters=>[{flowFilter,{fun funFilter/2,null}}],
 		formatter=>{logger_formatter,#{legacy_header=>true,single_line=>false}}

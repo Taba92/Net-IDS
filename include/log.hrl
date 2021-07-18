@@ -1,1 +1,0 @@
--define(LOGDIR, "../priv/SystemLog").

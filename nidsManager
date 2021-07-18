@@ -37,7 +37,6 @@ main(["config"|T])->
 	file:write(ConfigFile,Cookie ++ ":" ++ NidsName),
 	io:format(VmConfig, "~s~n", ["-setcookie " ++ Cookie]),
 	io:format(VmConfig, "~s~n", ["-sname " ++ NidsName]),
-	io:format(VmConfig, "~s~n", ["-detached"]),
 	file:close(VmConfig),
 	file:close(ConfigFile).
 

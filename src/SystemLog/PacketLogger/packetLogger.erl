@@ -1,7 +1,6 @@
 -module(packetLogger).
 -export([config/0,log/2,adding_handler/1]).
 -include("./include/packetFlow.hrl").
--include("../include/log.hrl").
 
 adding_handler(Config) ->
 	{ok,Config}.
@@ -13,7 +12,7 @@ log(LogEvent,Config)->
 	file:write_file(FileName,String,[append]).
 
 config()->
-	#{config => #{file => ?LOGDIR++"/packets.log"},
+	#{config => #{file => "../priv/packets.log"},
 		level=>info,
 		filters=>[{packetFilter,{fun funFilter/2,null}}],
 		formatter=>{logger_formatter,#{legacy_header=>true,single_line=>false}}

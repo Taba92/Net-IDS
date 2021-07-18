@@ -1,9 +1,11 @@
+#!/bin/bash
+
 cd "PathToClonedRepo"
 case $1 in
   start)
     CMD=$(./nidsManager start)
     if [[ "$CMD" == "FALSE" ]]; then
-      echo "NIDS ATTIVO"
+      echo "NIDS ALREADY ACTIVE\n"
     else
         ERL_FLAGS=" -args_file vm.args " rebar3 shell
     fi
@@ -11,13 +13,13 @@ case $1 in
   stop)
     CMD=$(./nidsManager stop)
     if [[ "$CMD" == "FALSE" ]]; then
-      echo "NIDS ATTIVO"
+      echo "NIDS ALREADY INACTIVE\n"
     fi
     ;;
   opt)
     CMD=$(./nidsManager opt)
     if [[ "$CMD" == "FALSE" ]]; then
-      echo "ERRORE: NIDS NON ATTIVO O PROCESSO HANDLER NON PRESENTE SUL NIDS"
+      echo "ERROR: NIDS INACTIVE OR USER PROCESS HANDLER NOT PRESENT\n"
     fi
     ;;
   config)
@@ -26,5 +28,5 @@ case $1 in
     ./nidsManager start
     ;;
   *)
-  echo -n " COMMAND SEQUENCE UNKNOWN"
+  echo -n " COMMAND SEQUENCE UNKNOWN\n"
 esac

@@ -10,8 +10,8 @@
                         flowRecorder,flowUtils,flowsBuilderWatcher,
                         flowsStorage,layer2,layer3,layer4,logInit,logLogger,
                         netCore,netDefender,netDetector,netFlow,netHandler,
-                        netProcesser,nidsInit,nids_app,options,optionsGraphic,
-                        packetLogger,sniffer,snifferWatcher,sysAnalyzer,
-                        sysInit,sysLogger]},
+                        netProcesser,nidsInit,nids_app,nids_app_sup,options,
+                        optionsGraphic,packetLogger,sniffer,snifferWatcher,
+                        sysAnalyzer,sysLogger]},
               {licenses,["Apache 2.0"]},
               {links,[]}]}.

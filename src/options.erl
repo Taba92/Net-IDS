@@ -2,8 +2,7 @@
 -export([file_configs/0,load_configs/1,reset_configs/1,list_configs/1,set_config/2]).
 -export([dump_log/1,showMsg/1,format/1]).
 -define(CONFIGFILE, "../priv/config").
--define(ROOTLOG,"../priv/SystemLog/").
--define(ROOT,sysInit).%indica il nome della radice dell'albero dell'applicazione
+-define(ROOT,nids_app_sup).%indica il nome della radice dell'albero dell'applicazione
 -define(ISRUNTIME(),whereis(?ROOT)/=undefined).
 -define(ISBOOLEAN(Bool),Bool==true;Bool==false).
 -define(ISCHILD(Father,ChildId),lists:keymember(ChildId,1,supervisor:which_children(Father))).
@@ -11,9 +10,9 @@
 dump_log(Dir)->
 	DirOut=Dir++"/"++createName(),
 	file:make_dir(DirOut),
-	Files=["FlowLogger/flows.log","LogLogger/logsErr.log","PacketLogger/packets.log","SysLogger/sysLog.log"],
-	[file:copy(?ROOTLOG++File,DirOut++"/"++filename:basename(File))||File<-Files],
-	[file:write_file(?ROOTLOG++File,"")||File<-Files].
+	Files=["flows.log","logsErr.log","packets.log","sysLog.log"],
+	[file:copy("../priv/"++File,DirOut++"/"++filename:basename(File))||File<-Files],
+	[file:write_file("../priv/"++File,"")||File<-Files].
 
 createName()->
 	{Data,Ora}=erlang:localtime(),

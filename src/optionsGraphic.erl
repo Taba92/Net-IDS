@@ -1,8 +1,10 @@
 -module(optionsGraphic).
--export([init/1,handle_info/2]).
+-export([init/0,init/1,handle_info/2]).
 -define(ADJUSTDIR(Dir),case lists:last(Dir)/=$/ of true->Dir++"/";false->Dir end).
 -record(state,{dets,ets,window}).
 -include_lib("wx/include/wx.hrl").
+
+init()-> gen_server:start({local,options},?MODULE,[],[]).
 
 init([])->
 	wx:new(),

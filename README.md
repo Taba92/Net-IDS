@@ -32,10 +32,8 @@ At present the nids is functioning.\
 Obviously being very recent it is still in the testing and debugging phase, so bugs or anomalous behavior may still emerge.\
 For now, I list the main points of improvement that have emerged personally:\
     1) Model recognition needs to be improved (currently at a low-medium accuracy rate).\
-    2) The hot code must also involve the graphic part of the NIDS, i.e. if I modify a graphic component and reload the code, it must update the relative graphics).\
-    3) Add logging for run-time configuration from GUI.\
-    4) Improve efficienty of model fitting.\
-    5) Introduce hot-code reload for application.\
-    6) Rewrite documentation.\
+    2) Add logging for run-time changes from GUI.\
+    3) Improve efficienty of model fitting.\
+    4) Introduce hot-code reload for application.\
 These points are considered to be short-term todo.
 
